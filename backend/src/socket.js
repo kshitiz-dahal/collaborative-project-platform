@@ -6,7 +6,7 @@ const Project = require("./models/Project");
 const initializeSocket = (server) => {
     const io = new Server(server, {
         cors: {
-            origin: "*",
+            origin: process.env.CLIENT_URL,
         },
     });
 
