@@ -529,7 +529,7 @@ Computer Science Engineering Student
 Chandigarh University
 
 - GitHub: https://github.com/kshitiz-dahal
-- LinkedIn: Add your LinkedIn profile URL
+- LinkedIn: www.linkedin.com/in/kshitiz-dahal-99299528b
 
 ---
 
