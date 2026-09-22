@@ -494,31 +494,21 @@ Possible future improvements include:
 
 ---
 
-## Demo
-
-### Live Application
-
-**Frontend:**  
-https://collaborative-project-platform.vercel.app
-
-**Backend API:**  
-https://collaborative-project-platform.onrender.com
-
 ### Projects Dashboard
 
-![Projects Dashboard](https://github.com/user-attachments/assets/9c07a35c-b014-4a56-bf7f-ac761d2e5ac1)
+![Projects Dashboard](docs/images/projects-dashboard.png)
 
 ### Collaborative Task Board
 
-![Collaborative Task Board](https://github.com/user-attachments/assets/8fe603f0-e893-4a87-8d76-9195437d61ad)
+![Collaborative Task Board](docs/images/task-board.png)
 
 ### Task Details & Comments
 
-![Task Details and Comments](https://github.com/user-attachments/assets/8f71e22d-1d6d-4045-a2b1-62423e9cd143)
+![Task Details and Comments](docs/images/task-details.png)
 
 ### Notifications
 
-![Notifications](https://github.com/user-attachments/assets/7f7bc794-444c-4f36-940d-77d67a098dc0)
+![Notifications](docs/images/notification/activities.png)
 
 ---
 
