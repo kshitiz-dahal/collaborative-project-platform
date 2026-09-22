@@ -158,6 +158,8 @@ SyncForge follows a client-server architecture with a React frontend communicati
                     │  Notifications          │
                     └─────────────────────────┘
 
+```
+
 ## Authentication & Authorization
 
 SyncForge uses JWT-based authentication to protect user accounts and API endpoints.
@@ -204,6 +206,8 @@ SyncForge uses JWT-based authentication to protect user accounts and API endpoin
 ┌──────────────────────┐
 │ Protected Controller │
 └──────────────────────┘
+
+```
 
 ## API Overview
 
@@ -376,6 +380,8 @@ collaborative-project-platform/
 ├── .gitignore
 └── README.md
 
+```
+
 ## Getting Started
 
 Follow these steps to run SyncForge locally.
@@ -394,6 +400,7 @@ Make sure the following are installed:
 ```bash
 git clone https://github.com/kshitiz-dahal/collaborative-project-platform.git
 cd collaborative-project-platform
+```
 
 ### 2. Backend setup
 
@@ -402,6 +409,7 @@ Open a terminal in the project root and navigate to the backend:
 ```bash
 cd backend
 npm install
+```
 
 ### 3. Frontend setup
 
@@ -410,6 +418,7 @@ Open another terminal and navigate to the frontend:
 ```bash
 cd frontend
 npm install
+```
 
 ---
 
@@ -508,7 +517,7 @@ Possible future improvements include:
 
 ### Notifications
 
-![Notifications](docs/images/notification/activities.png)
+![Notifications](docs/images/notifications.png)
 
 ---
 
