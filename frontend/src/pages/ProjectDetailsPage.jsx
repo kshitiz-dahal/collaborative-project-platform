@@ -45,16 +45,17 @@ const ProjectDetailsPage = () => {
     
     const [creatingTask, setCreatingTask] = useState(false);
     const [statusError, setStatusError] = useState("");
-    const [taskError, setTaskError] = useState("");
-
+    
     const [showMembersModal, setShowMembersModal] = useState(false);
     
     const [addingMember, setAddingMember] = useState(false);
     const [removingMemberId, setRemovingMemberId] = useState(null);
     const [memberError, setMemberError] = useState("");
-
+    
     const [tasks, setTasks] = useState([]);
     const [tasksLoading, setTasksLoading] = useState(true);
+    const [tasksLoadError, setTasksLoadError] = useState("");
+    const [taskError, setTaskError] = useState("");
 
     const [editingTaskId, setEditingTaskId] = useState(null);
     const [updatingTask, setUpdatingTask] = useState(false);
@@ -330,6 +331,26 @@ const ProjectDetailsPage = () => {
         setTaskError("");
     };
 
+    const fetchTasks = async () => {
+        try {
+            setTasksLoading(true);
+            setTasksLoadError("");
+
+            const response = await api.get(
+                `/projects/${projectId}/tasks`
+            );
+
+            setTasks(response.data.tasks);
+        } catch (error) {
+            setTasksLoadError(
+                error.response?.data?.message ||
+                "Failed to load tasks"
+            );
+        } finally {
+            setTasksLoading(false);
+        }
+    };
+
     useEffect(() => {
         
         const fetchProject = async () => {
@@ -350,26 +371,26 @@ const ProjectDetailsPage = () => {
             }
         };
         
-        const fetchTasks = async () => {
-            try {
-                setTasksLoading(true);
-                setTaskError("");
+        // const fetchTasks = async () => {
+        //     try {
+        //         setTasksLoading(true);
+        //         setTaskError("");
 
-                const response = await api.get(
-                    `/projects/${projectId}/tasks`
-                );
+        //         const response = await api.get(
+        //             `/projects/${projectId}/tasks`
+        //         );
 
-                setTasks(response.data.tasks);
-            } catch (error) {
+        //         setTasks(response.data.tasks);
+        //     } catch (error) {
 
-                setTaskError(
-                    error.response?.data?.message ||
-                    "Failed to load tasks"
-                );
-            } finally {
-                setTasksLoading(false);
-            }
-        };
+        //         setTaskError(
+        //             error.response?.data?.message ||
+        //             "Failed to load tasks"
+        //         );
+        //     } finally {
+        //         setTasksLoading(false);
+        //     }
+        // };
 
         const fetchActivities = async () => {
             try {
@@ -760,10 +781,10 @@ const ProjectDetailsPage = () => {
                         <p>Getting your project tasks...</p>
                     </div>
                 </div>
-            ) : taskError ? (
+            ) : tasksLoadError ? (
                 <div className="tasks-error">
                     <h3>Couldn't load tasks</h3>
-                    <p>{taskError}</p>
+                    <p>{tasksLoadError}</p>
                     <button type="button" onClick={fetchTasks}>
                         Try Again
                     </button>
