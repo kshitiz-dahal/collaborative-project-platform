@@ -506,20 +506,19 @@ https://collaborative-project-platform.onrender.com
 
 ### Projects Dashboard
 
-<img width="1917" height="896" alt="Screenshot 2026-09-22 212957" src="https://github.com/user-attachments/assets/9c07a35c-b014-4a56-bf7f-ac761d2e5ac1" />
-
+![Projects Dashboard](https://github.com/user-attachments/assets/9c07a35c-b014-4a56-bf7f-ac761d2e5ac1)
 
 ### Collaborative Task Board
 
-<img width="1917" height="930" alt="Screenshot 2026-09-22 213025" src="https://github.com/user-attachments/assets/8fe603f0-e893-4a87-8d76-9195437d61ad" />
+![Collaborative Task Board](https://github.com/user-attachments/assets/8fe603f0-e893-4a87-8d76-9195437d61ad)
 
 ### Task Details & Comments
 
-<img width="1891" height="930" alt="Screenshot 2026-09-22 213117" src="https://github.com/user-attachments/assets/8f71e22d-1d6d-4045-a2b1-62423e9cd143" />
+![Task Details and Comments](https://github.com/user-attachments/assets/8f71e22d-1d6d-4045-a2b1-62423e9cd143)
 
 ### Notifications
 
-<img width="1897" height="915" alt="Screenshot 2026-09-22 213143" src="https://github.com/user-attachments/assets/7f7bc794-444c-4f36-940d-77d67a098dc0" />
+![Notifications](https://github.com/user-attachments/assets/7f7bc794-444c-4f36-940d-77d67a098dc0)
 
 ---
 
