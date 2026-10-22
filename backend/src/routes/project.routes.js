@@ -10,6 +10,8 @@ const {
     removeProjectMember,
 } = require("../controllers/project.controller");
 
+const { getProjectSummary } = require("../controllers/ai-project.controller");
+
 const authenticate = require("../middleware/auth.middleware");
 
 const router = express.Router();
@@ -24,6 +26,12 @@ router.delete(
     "/:projectId/members/:userId",
     authenticate,
     removeProjectMember
+);
+
+router.get(
+    "/:projectId/ai-summary",
+    authenticate,
+    getProjectSummary
 );
 
 module.exports = router;

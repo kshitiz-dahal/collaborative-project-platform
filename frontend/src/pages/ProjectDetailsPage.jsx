@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
@@ -78,6 +79,12 @@ const ProjectDetailsPage = () => {
     const [activities, setActivities] = useState([]);
     const [activitiesLoading, setActivitiesLoading] = useState(false);
     const [activitiesError, setActivitiesError] = useState("");
+
+    const [aiSummary, setAiSummary] = useState("");
+    const [aiSummaryLoading, setAiSummaryLoading] = useState(false);
+    const [aiSummaryError, setAiSummaryError] = useState("");
+
+    const aiSummaryProjectId = useRef(projectId);
 
     const handleOpenEditProject = () => {
         setEditProjectForm({
@@ -294,6 +301,42 @@ const ProjectDetailsPage = () => {
         }
     };
 
+    const handleGenerateSummary = async () => {
+        const requestedProjectId = projectId;
+
+        try {
+            setAiSummaryLoading(true);
+            setAiSummaryError("");
+            setAiSummary("");
+            
+            const response = await api.get(
+                `/projects/${requestedProjectId}/ai-summary`
+            );
+
+            // Ignore a response for a project we have left.
+            if (aiSummaryProjectId.current !== requestedProjectId) {
+                return;
+            }
+
+            setAiSummary(response.data.summary);
+        } catch (error) {
+            if (aiSummaryProjectId.current !== requestedProjectId) {
+                return;
+            }
+
+            setAiSummaryError(
+                error.response?.data?.message ||
+                "Failed to fetch summary"
+            );
+
+        } finally {
+            // Don't let an old request change the new project's loading state
+            if (aiSummaryProjectId.current === requestedProjectId) {
+                setAiSummaryLoading(false);
+            }
+        }
+    };
+
     const filteredTasks = tasks.filter((task) => {
         const searchTerm = search.trim().toLowerCase();
 
@@ -414,6 +457,13 @@ const ProjectDetailsPage = () => {
         fetchProject();
         fetchTasks();
         fetchActivities();
+
+        aiSummaryProjectId.current = projectId;
+
+        setAiSummary("");
+        setAiSummaryError("");
+        setAiSummaryLoading(false);
+
     }, [projectId]);
 
     useEffect(() => {
@@ -670,6 +720,49 @@ const ProjectDetailsPage = () => {
                 onViewChange={setViewMode}
                 onManageMembers={() => setShowMembersModal(true)}
             />
+
+            <section className="ai-summary-section">
+                <div className="section-heading">
+                    <div>
+                        <h2>AI Project Summary</h2>
+                        <p>
+                            Get an overview of project progress,
+                            outstanding work, and potential risks.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        className="primary-button"
+                        onClick={handleGenerateSummary}
+                        disabled={aiSummaryLoading}
+                    >
+                        {aiSummaryLoading
+                            ? "Generating..."
+                            : aiSummary
+                                ? "Regenerate Summary"
+                                : "Generate Summary"}
+                    </button>
+                </div>
+
+                {aiSummaryLoading && (
+                    <p role="status">
+                        Analyzing project data and generating your summary...
+                    </p>
+                )}
+
+                {aiSummaryError && (
+                    <div className="ai-summary-error" role="alert">
+                        {aiSummaryError}
+                    </div>
+                )}
+
+                {aiSummary && !aiSummaryLoading && (
+                    <div className="ai-summary-content">
+                        <ReactMarkdown>{aiSummary}</ReactMarkdown>
+                    </div>
+                )}
+            </section>
             
             <section className="members-section">
                 <div className="section-heading">
