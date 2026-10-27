@@ -1,8 +1,0 @@
-warning: in the working copy of 'backend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'backend/package.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'frontend/index.html', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'frontend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'frontend/package.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'frontend/vite.config.js', LF will be replaced by CRLF the next time Git touches it
-frontend/src/pages/ProjectDetailsPage.jsx:311: trailing whitespace.
-[32m+[m[41m            [m
